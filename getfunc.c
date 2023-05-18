@@ -12,6 +12,6 @@ char *get_line()
 
 	buffer = malloc(20);
 	getline(&buffer, &buffsize, stdin);
-   	buffer[_strspn(buffer, "\n")] = '\0';
+	buffer[_strspn(buffer, "\n")] = '\0';
 	return (buffer);
 }
