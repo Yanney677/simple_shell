@@ -25,7 +25,7 @@ int main(void)
 		{
 			result = execve(arg[0], arg, NULL);
 			if (result == -1)
-				printf("Error executing command.\n");
+				printf("No such file or directory\n");
 			free(input);
 		}
 		else if (fk > 0)
