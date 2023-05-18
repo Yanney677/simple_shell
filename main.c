@@ -3,23 +3,32 @@
  * main - the main function
  * Return: 0 on success
  */
-int main() 
+int main()
 {
-	char *input;
+	int fk, i;
+	char *input, *arg[3];
 	int result;
 	while (1)
 	{
 		printf("($) ");
 		input = get_line();
+		arg[0] = input;
+		arg[1] = NULL;
 		if (_strcmp(input, "exit") == 0) 
 		{
 			free(input);
-			break;
+			exit(0);
 		}
-		result = system(input);
-		if (result == -1) 
-			printf("Error executing command.\n");
-		free(input);
+		fk = fork();
+		if (fk == 0)
+		{
+			result = execve(arg[0], arg, NULL);
+			if (result == -1) 
+				printf("Error executing command.\n");
+			free(input);
+		}
+		else if (fk > 0)
+			wait(NULL);
 	}
 	return 0;
 }

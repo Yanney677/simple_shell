@@ -7,10 +7,11 @@
  */
 char *get_line()
 {
-	char *line;
+	char *line, *buffer;
+	size_t buffsize = 32;
 
-	line = malloc(20);
-	fgets(line, 20, stdin);
-   	line[_strspn(line, "\n")] = '\0';
-	return (line);
+	buffer = malloc(20);
+	getline(&buffer, &buffsize, stdin);
+   	buffer[_strspn(buffer, "\n")] = '\0';
+	return (buffer);
 }
