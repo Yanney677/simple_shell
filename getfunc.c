@@ -7,11 +7,13 @@
  */
 char *get_line()
 {
-	char *line, *buffer;
+	char *buffer, comp[5] = { '\0' };
 	size_t buffsize = 32;
 
 	buffer = malloc(20);
 	getline(&buffer, &buffsize, stdin);
 	buffer[_strspn(buffer, "\n")] = '\0';
+	if (strcmp(buffer, comp) == 0)
+		return (NULL);
 	return (buffer);
 }
