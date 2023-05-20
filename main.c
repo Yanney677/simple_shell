@@ -5,31 +5,38 @@
  */
 int main(void)
 {
-        int fk, i;
-        char *input, *arg[3];
-        int result;
+	int fk, result, i;
+	char *input, *arg[3], *res = NULL;
 
-        while (1)
-        {
-                printf("($) ");
-                input = get_line();
-                arg[0] = input;
-                arg[1] = NULL;
-                if (_strcmp(input, "exit") == 0)
-                {
-                        free(input);
-                        exit(0);
-                }
-                fk = fork();
-                if (fk == 0)
-                {
-                        result = execve(arg[0], arg, NULL);
-                        if (result == -1)
-				printf("No such file or directory\n");
-                        free(input);
-                }
-                else if (fk > 0)
-                        wait(NULL);
-        }
-        return (0);
-
+	while (1)
+	{
+		i = 0;
+		printf("($) ");
+		input = get_line();
+		if (input == NULL)
+			continue;
+		res = strtok(input, " ");
+		if (res == NULL)
+		{
+			arg[0] = input;
+			arg[1] = NULL;
+		}
+		else
+		{
+			while (res != NULL && i < 2)
+			{
+				arg[i] = res;
+				i++;
+				res = strtok(NULL, " ");
+			}
+			arg[i] = NULL;
+		}
+		if (_strcmp(input, "exit") == 0)
+		{
+			free(input);
+			exit(0);
+		}
+		child(arg, input);
+	}
+	return (0);
+}
