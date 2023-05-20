@@ -5,13 +5,14 @@
  */
 int main(void)
 {
-	int fk, result, i;
-	char *input, *arg[3], *res = NULL;
+	int i, j;
+	char *input, *arg[3], *res = NULL, print[4] = "($) ";
 
 	while (1)
 	{
 		i = 0;
-		printf("($) ");
+		for (j = 0; j < 4; j++)
+			_putchar(print[j]);
 		input = get_line();
 		if (input == NULL)
 			continue;

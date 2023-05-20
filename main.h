@@ -11,4 +11,5 @@ char *get_line();
 int _strcmp(char *s1, char *s2);
 unsigned int _strspn(char *s, char *accept);
 void child(char *arg[3], char *);
+int _putchar(char);
 #endif
