@@ -13,7 +13,7 @@ void child(char *arg[3], char *input)
 	{
 		result = execve(arg[0], arg, NULL);
 		if (result == -1)
-			printf("Error executing command.\n");
+			_printf("Error executing command.\n");
 		free(input);
 	}
 	else if (fk > 0)

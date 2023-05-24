@@ -5,39 +5,43 @@
  */
 int main(void)
 {
-	int i, j;
-	char *input, *arg[3], *res = NULL, print[4] = "($) ";
+	int check = 0;
+	char *input, *arg[4], *res = NULL, **s;
 
+	check = isatty(0);
 	while (1)
 	{
-		i = 0;
-		for (j = 0; j < 4; j++)
-			_putchar(print[j]);
+		if (check == 1)
+			_printf("($) ");
 		input = get_line();
 		if (input == NULL)
 			continue;
-		res = strtok(input, " ");
-		if (res == NULL)
-		{
-			arg[0] = input;
-			arg[1] = NULL;
-		}
-		else
-		{
-			while (res != NULL && i < 2)
-			{
-				arg[i] = res;
-				i++;
-				res = strtok(NULL, " ");
-			}
-			arg[i] = NULL;
-		}
 		if (_strcmp(input, "exit") == 0)
 		{
 			free(input);
+			free(res);
 			exit(0);
 		}
-		child(arg, input);
+		if (_strcmp(input, "env") == 0)
+		{
+			_envCheck();
+			continue;
+		}
+		res = strtok(input, " ");
+		if (res == NULL)
+		{
+			s[0] = input;
+			s[1] = NULL;
+		}
+		else
+			s = argum(res, arg);
+		s[0] = pathCheck(s[0]);
+		if (s[0] != NULL)
+			child(s, input);
+		else
+			_printf("%s: command not found\n", input);
+		if (check != 1)
+			break;
 	}
 	return (0);
 }
