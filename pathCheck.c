@@ -8,6 +8,8 @@ char *pathCheck(char *arg)
 {
 	char *path, *path2, *path3, *dir;
 
+	if ((_strcmp2(arg, "/bin/") == 0))
+		arg = _changer(arg);
 	path = getenv("PATH");
 	path2 = strdup(path);
 	dir = strtok(path2, ":");
