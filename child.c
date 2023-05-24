@@ -11,7 +11,7 @@ void child(char *arg[3], char *input)
 	fk = fork();
 	if (fk == 0)
 	{
-		result = execve(arg[0], arg, NULL);
+		result = execve(arg[0], arg, environ);
 		if (result == -1)
 			_printf("Error executing command.\n");
 		free(input);

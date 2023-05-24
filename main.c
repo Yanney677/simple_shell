@@ -5,7 +5,7 @@
  */
 int main(void)
 {
-	int check = 0;
+	int check = 0, a;
 	char *input, *arg[4], *res = NULL, **s;
 
 	check = isatty(0);
@@ -35,8 +35,8 @@ int main(void)
 		}
 		else
 			s = argum(res, arg);
-		s[0] = pathCheck(s[0]);
-		if (s[0] != NULL)
+		a = pathCheck(s[0]);
+		if (a > 0)
 			child(s, input);
 		else
 			_printf("%s: command not found\n", input);

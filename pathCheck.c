@@ -4,7 +4,7 @@
  * @arg: the user input first argument
  * Return: the argument if success else null
  */
-char *pathCheck(char *arg)
+int pathCheck(char *arg)
 {
 	char *path, *path2, *path3, *dir;
 
@@ -20,11 +20,11 @@ char *pathCheck(char *arg)
 		if (access(path3, F_OK) == 0)
 		{
 			free(path2);
-			return (path3);
+			return (1);
 		}
 		free(path3);
 		dir = strtok(NULL, ":");
 	}
 	free(path2);
-	return (NULL);
+	return (-1);
 }
