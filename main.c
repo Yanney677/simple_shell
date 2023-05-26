@@ -19,8 +19,7 @@ int main(void)
 		if (_strcmp(input, "exit") == 0)
 		{
 			free(input);
-			free(res);
-			exit(0);
+			return (0);
 		}
 		if (_strcmp(input, "env") == 0)
 		{
@@ -32,6 +31,7 @@ int main(void)
 		{
 			s[0] = input;
 			s[1] = NULL;
+			free(res);
 		}
 		else
 			s = argum(res, arg);
@@ -40,6 +40,7 @@ int main(void)
 			child(s, input);
 		else
 			_printf("%s: command not found\n", input);
+		free(input);
 		if (check != 1)
 			break;
 	}
