@@ -14,6 +14,8 @@ int main(void)
 		if (check == 1)
 			_printf("($) ");
 		input = get_line();
+		if (check != 1 && input == NULL)
+			break;
 		if (input == NULL)
 			continue;
 		if (_strcmp(input, "exit") == 0)
@@ -42,7 +44,7 @@ int main(void)
 			_printf("%s: command not found\n", input);
 		free(input);
 		if (check != 1)
-			break;
+			continue;
 	}
 	return (0);
 }
