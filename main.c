@@ -5,15 +5,15 @@
  */
 int main(void)
 {
-	int check = 0, a;
+	int a, check;
 	char *input, *arg[4], *res = NULL, **s;
 
 	check = isatty(0);
 	while (1)
 	{
-		if (check == 1)
-			_printf("($) ");
 		input = get_line();
+		if (input == NULL && check != -1)
+			break;
 		if (input == NULL)
 			continue;
 		if (_strcmp(input, "exit") == 0)
@@ -41,8 +41,6 @@ int main(void)
 		else
 			_printf("%s: command not found\n", input);
 		free(input);
-		if (check != 1)
-			break;
 	}
 	return (0);
 }

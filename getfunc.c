@@ -9,11 +9,23 @@ char *get_line()
 {
 	char *buffer, comp[5] = { '\0' };
 	size_t buffsize = 32;
+	int check, a;
 
+	check = isatty(0);
+	if (check == 1)
+		_printf("($) ");
 	buffer = malloc(sizeof(char) * buffsize);
 	if (buffer == NULL)
+	{
 		free(buffer);
-	getline(&buffer, &buffsize, stdin);
+		return (NULL);
+	}
+	a = getline(&buffer, &buffsize, stdin);
+	if (a == -1)
+	{
+		free(buffer);
+		return (NULL);
+	}
 	buffer[_strspn(buffer, "\n")] = '\0';
 	if (_strcmp(buffer, comp) == 0)
 	{
