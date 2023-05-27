@@ -21,7 +21,7 @@ unsigned int _strspn(char *s, char *accept);
 void child(char *arg[3], char *);
 int _putchar(char);
 char *pathCheck(char *arg);
-void _envCheck(void);
+void _envCheck(char *);
 char **argum(char *res, char *arg[4]);
 char *_changer(char *arg);
 int _strcmp2(char *s1, char *s2);

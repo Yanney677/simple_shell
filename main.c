@@ -22,7 +22,7 @@ int main(void)
 		}
 		if (_strcmp(input, "env") == 0)
 		{
-			_envCheck();
+			_envCheck(input);
 			continue;
 		}
 		res = strtok(input, " ");
