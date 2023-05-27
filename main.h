@@ -25,4 +25,5 @@ void _envCheck(void);
 char **argum(char *res, char *arg[4]);
 char *_changer(char *arg);
 int _strcmp2(char *s1, char *s2);
+char *_workdir(char *);
 #endif

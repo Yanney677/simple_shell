@@ -18,6 +18,14 @@ char *_changer(char *s)
 			j++;
 		}
 	}
+	else if ((_strcmp2(s, "./") == 0))
+	{
+		for (i = 2; s[i - 1] != '\0'; i++)
+		{
+			s2[j] = s[i];
+			j++;
+		}
+	}
 	else
 	{
 		for (k = 0; s[k] != '\0'; k++)

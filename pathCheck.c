@@ -6,9 +6,20 @@
  */
 char *pathCheck(char *arg)
 {
-	char *path, *path2, *path3, *dir, *temp;
+	char *path, *path2, *path3, *dir, *temp, *temp2;
 
 	temp = _changer(arg);
+	if (access(temp, X_OK) == 0)
+	{
+		temp2 = _workdir(temp);
+		if (temp2 == NULL)
+		{
+			free(temp);
+			return (NULL);
+		}
+		free(temp);
+		return (temp2);
+	}
 	path = getenv("PATH");
 	path2 = strdup(path);
 	dir = strtok(path2, ":");
