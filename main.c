@@ -5,10 +5,9 @@
  */
 int main(void)
 {
-	int a, check;
-	char *input, *arg[4], *res = NULL, **s;
+	int check = isatty(0);
+	char *input, *arg[4], *res = NULL, **s, *s2;
 
-	check = isatty(0);
 	while (1)
 	{
 		input = get_line();
@@ -31,16 +30,19 @@ int main(void)
 		{
 			s[0] = input;
 			s[1] = NULL;
-			free(res);
 		}
 		else
 			s = argum(res, arg);
-		a = pathCheck(s[0]);
-		if (a > 0)
+		s2 = pathCheck(s[0]);
+		if (s2 != NULL)
+		{
+			s[0] = s2;
 			child(s, input);
+		}
 		else
 			_printf("%s: command not found\n", input);
 		free(input);
+		free(s2);
 	}
 	return (0);
 }
