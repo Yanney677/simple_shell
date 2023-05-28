@@ -5,7 +5,7 @@
  */
 int main(void)
 {
-	int check = isatty(0);
+	int a, check = isatty(0);
 	char *input, *arg[4], *res = NULL, **s, *s2;
 
 	while (1)
@@ -33,6 +33,21 @@ int main(void)
 		}
 		else
 			s = argum(res, arg);
+		if (_strcmp(s[0], "cd") == 0)
+		{
+			a = chdir(s[1]);
+			if (a != -1)
+			{
+				free(input);
+				continue;
+			}
+			else
+			{
+				perror("chdir");
+				free(input);
+				continue;
+			}
+		}
 		s2 = pathCheck(s[0]);
 		if (s2 != NULL)
 		{
