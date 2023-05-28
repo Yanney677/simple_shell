@@ -5,9 +5,10 @@
  */
 int main(void)
 {
-	int a, check = isatty(0);
+	int check = isatty(0);
 	char *input, *arg[4], *res = NULL, **s, *s2;
 
+	setenv("_OLDPWD", "", 1);
 	while (1)
 	{
 		input = get_line();
@@ -35,18 +36,8 @@ int main(void)
 			s = argum(res, arg);
 		if (_strcmp(s[0], "cd") == 0)
 		{
-			a = chdir(s[1]);
-			if (a != -1)
-			{
-				free(input);
-				continue;
-			}
-			else
-			{
-				perror("chdir");
-				free(input);
-				continue;
-			}
+			_dirch(s[1], input);
+			continue;
 		}
 		s2 = pathCheck(s[0]);
 		if (s2 != NULL)

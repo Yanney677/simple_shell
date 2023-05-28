@@ -1,6 +1,7 @@
 #include "main.h"
 /**
  * _envCheck - a function that prints the environments
+ * @input: the user input to free
  * Return: NULL
  */
 void _envCheck(char *input)
